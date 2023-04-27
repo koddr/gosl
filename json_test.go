@@ -132,7 +132,7 @@ func TestUnmarshal(t *testing.T) {
 
 	g := GenericUtility[user, any]{} // tests for method
 
-	json, err = g.Unmarshal(nil, u)
+	_, err = g.Unmarshal(nil, u)
 	require.Error(t, err)
 
 	json, err = g.Unmarshal(data, u)

@@ -37,7 +37,7 @@ func TestToString(t *testing.T) {
 
 	g := Utility{} // tests for method
 
-	s, err = g.ToString(nil)
+	_, err = g.ToString(nil)
 	require.Error(t, err)
 
 	s, err = g.ToString([]byte(`hello, world`))
@@ -57,7 +57,7 @@ func TestToBytes(t *testing.T) {
 
 	g := Utility{} // tests for method
 
-	b, err = g.ToBytes("")
+	_, err = g.ToBytes("")
 	require.Error(t, err)
 
 	b, err = g.ToBytes("hello, world")
