@@ -2,7 +2,7 @@ package gosl
 
 import (
 	"testing"
-	
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -14,9 +14,9 @@ func BenchmarkMarshal_StructField_4(b *testing.B) {
 		Email    string `json:"email"`
 		Password string `json:"-"`
 	}
-	
+
 	u := &user{}
-	
+
 	for i := 0; i < b.N; i++ {
 		Marshal[user](u)
 	}
@@ -41,9 +41,9 @@ func BenchmarkMarshal_StructField_16(b *testing.B) {
 		Rel3     string `json:"rel_3"`
 		Rel4     string `json:"rel_4"`
 	}
-	
+
 	u := &user{}
-	
+
 	for i := 0; i < b.N; i++ {
 		Marshal[user](u)
 	}
@@ -56,10 +56,10 @@ func BenchmarkUnmarshal_StructField_4(b *testing.B) {
 		Email    string `json:"email"`
 		Password string `json:"-"`
 	}
-	
+
 	u := &user{}
 	d := []byte(`{"id":1,"name":"Viktor","email":"my@mail.com"}`)
-	
+
 	for i := 0; i < b.N; i++ {
 		Unmarshal[user](d, u)
 	}
@@ -84,10 +84,10 @@ func BenchmarkUnmarshal_StructField_16(b *testing.B) {
 		Rel3     string `json:"rel_3"`
 		Rel4     string `json:"rel_4"`
 	}
-	
+
 	u := &user{}
 	d := []byte(`{"id":1,"name":"Viktor","email":"my@mail.com","attr_1":"one","attr_2":"two","attr_3":"three","attr_4":"four","attr_5":"five","attr_6":"six","attr_7":"seven","attr_8":"eight","rel_1":"one","rel_2":"two","rel_3":"three","rel_4":"four",}`)
-	
+
 	for i := 0; i < b.N; i++ {
 		Unmarshal[user](d, u)
 	}
@@ -99,15 +99,15 @@ func TestMarshal(t *testing.T) {
 		Name     string `json:"name"`
 		Password string `json:"-"`
 	}
-	
+
 	u := &user{ID: 1, Name: "Viktor"}
-	
+
 	json, err := Marshal(u)
 	require.NoError(t, err)
 	assert.EqualValues(t, []byte(`{"id":1,"name":"Viktor"}`), json)
-	
+
 	g := GenericUtility[user, any]{} // tests for method
-	
+
 	json, err = g.Marshal(u)
 	require.NoError(t, err)
 	assert.EqualValues(t, []byte(`{"id":1,"name":"Viktor"}`), json)
@@ -119,22 +119,22 @@ func TestUnmarshal(t *testing.T) {
 		Name     string `json:"name"`
 		Password string `json:"-"`
 	}
-	
+
 	u := &user{ID: 1, Name: "Viktor"}
 	data := []byte(`{"id":1,"name":"Viktor"}`)
-	
+
 	_, err := Unmarshal(nil, u)
 	require.Error(t, err)
-	
+
 	json, err := Unmarshal(data, u)
 	require.NoError(t, err)
 	assert.EqualValues(t, u, json)
-	
+
 	g := GenericUtility[user, any]{} // tests for method
-	
+
 	_, err = g.Unmarshal(nil, u)
 	require.Error(t, err)
-	
+
 	json, err = g.Unmarshal(data, u)
 	require.NoError(t, err)
 	assert.EqualValues(t, u, json)
