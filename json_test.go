@@ -123,10 +123,10 @@ func TestUnmarshal(t *testing.T) {
 	u := &user{ID: 1, Name: "Viktor"}
 	data := []byte(`{"id":1,"name":"Viktor"}`)
 
-	json, err := Unmarshal(nil, u)
+	_, err := Unmarshal(nil, u)
 	require.Error(t, err)
 
-	json, err = Unmarshal(data, u)
+	json, err := Unmarshal(data, u)
 	require.NoError(t, err)
 	assert.EqualValues(t, u, json)
 
