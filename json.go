@@ -77,6 +77,6 @@ func Unmarshal[T any](data []byte, model *T) (*T, error) {
 	if err := jsoniter.ConfigCompatibleWithStandardLibrary.Unmarshal(data, &model); err != nil {
 		return nil, err
 	}
-	
+
 	return model, nil
 }

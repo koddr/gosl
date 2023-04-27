@@ -32,7 +32,7 @@ import (
 //		fmt.Println(string(b))
 //	}
 func ToBytes(str string) ([]byte, error) {
-	if len(str) == 0 {
+	if str == "" {
 		return nil, errors.New("can't convert empty string to byte slice")
 	}
 	
@@ -66,7 +66,7 @@ func ToBytes(str string) ([]byte, error) {
 //		fmt.Println(s)
 //	}
 func ToString(byteSlice []byte) (string, error) {
-	if byteSlice == nil || len(byteSlice) == 0 {
+	if byteSlice == nil {
 		return "", errors.New("can't convert nil byte slice to string")
 	}
 	

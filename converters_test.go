@@ -27,41 +27,41 @@ func BenchmarkToBytes_HelloWorld(b *testing.B) {
 }
 
 func TestToString(t *testing.T) {
-	_, err := ToString(nil)
+	s, err := ToString(nil)
 	require.Error(t, err)
 
-	b, err := ToString([]byte(`hello, world`))
+	s, err = ToString([]byte(`hello, world`))
 	require.NoError(t, err)
-	assert.EqualValues(t, b, "hello, world", "should be equal")
-	assert.NotEqual(t, b, "wrong", "should not be equal")
+	assert.EqualValues(t, s, "hello, world", "should be equal")
+	assert.NotEqual(t, s, "wrong", "should not be equal")
 
 	g := Utility{} // tests for method
 
-	_, err = g.ToString(nil)
+	s, err = g.ToString(nil)
 	require.Error(t, err)
 
-	b, err = g.ToString([]byte(`hello, world`))
+	s, err = g.ToString([]byte(`hello, world`))
 	require.NoError(t, err)
-	assert.EqualValues(t, b, "hello, world", "should be equal")
-	assert.NotEqual(t, b, "wrong", "should not be equal")
+	assert.EqualValues(t, s, "hello, world", "should be equal")
+	assert.NotEqual(t, s, "wrong", "should not be equal")
 }
 
 func TestToBytes(t *testing.T) {
-	_, err := ToBytes("")
+	b, err := ToBytes("")
 	require.Error(t, err)
 
-	s, err := ToBytes("hello, world")
+	b, err = ToBytes("hello, world")
 	require.NoError(t, err)
-	assert.EqualValues(t, s, []byte(`hello, world`), "should be equal")
-	assert.NotEqual(t, s, []byte(`wrong`), "should not be equal")
+	assert.EqualValues(t, b, []byte(`hello, world`), "should be equal")
+	assert.NotEqual(t, b, []byte(`wrong`), "should not be equal")
 
 	g := Utility{} // tests for method
 
-	_, err = g.ToBytes("")
+	b, err = g.ToBytes("")
 	require.Error(t, err)
 
-	s, err = g.ToBytes("hello, world")
+	b, err = g.ToBytes("hello, world")
 	require.NoError(t, err)
-	assert.EqualValues(t, s, []byte(`hello, world`), "should be equal")
-	assert.NotEqual(t, s, []byte(`wrong`), "should not be equal")
+	assert.EqualValues(t, b, []byte(`hello, world`), "should be equal")
+	assert.NotEqual(t, b, []byte(`wrong`), "should not be equal")
 }

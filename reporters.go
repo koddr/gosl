@@ -30,7 +30,7 @@ func ContainsCaseInsensitive(s, substr string) bool {
 	if s == "" || substr == "" {
 		return false
 	}
-	
+
 	return strings.Contains(strings.ToLower(s), strings.ToLower(substr))
 }
 
@@ -60,13 +60,13 @@ func ContainsInSlice[T comparable](s []T, value T) bool {
 	if s == nil {
 		return false
 	}
-	
+
 	for _, elem := range s {
 		if elem == value {
 			return true
 		}
 	}
-	
+
 	return false
 }
 
@@ -96,10 +96,10 @@ func ContainsInMap[T comparable, K any](m map[T]K, key T) bool {
 	if m == nil {
 		return false
 	}
-	
+
 	if _, exists := m[key]; exists {
 		return true
 	}
-	
+
 	return false
 }
