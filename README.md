@@ -85,7 +85,7 @@ func (a *App) handleSomething() error {
 
 Basic usage and full code examples of all functions of the `gosl` package you can find on the [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
 
-The package offers two categories of snippets: **regular** and **universal** using generics (Go 1.18+). Also, note that some features will only work correctly on Go 1.20 and above.
+The package provides two categories of functions: **regular** and **universal** using generics (Go 1.18+). Also, note that some features will only work correctly on Go 1.20 and above.
 
 ## 🔨 Regular functions
 
