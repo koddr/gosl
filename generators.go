@@ -6,8 +6,8 @@ import (
 	"errors"
 )
 
-// RandomString function to generate a random string with given size. Using
-// built-in "crypto/rand" and "encoding/hex" packages.
+// RandomString generates a random string with given size using built-in
+// "crypto/rand" and "encoding/hex" packages.
 //
 // If err != nil returns "" (empty) value for a string and error.
 //

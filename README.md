@@ -1,6 +1,9 @@
 # gosl – The Go Snippet Library
 
-<img src="https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<img src="https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none" alt="code coverage" />&nbsp;<a href="https://goreportcard.com/report/github.com/koddr/gosl" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none" alt="license" />
+<img src="https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;
+<img src="https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none" alt="code coverage" />&nbsp;
+<a href="https://goreportcard.com/report/github.com/koddr/gosl" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;
+<img src="https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none" alt="license" />
 
 The **Go Snippet Library** (_or **gosl** for a short_) provides **snippets** 
 collection for working with routine operations in your **Go** programs with 
@@ -9,13 +12,13 @@ a super **user-friendly** API and the most efficient performance (see the
 
 ## ⚡️ Quick start
 
-1️⃣ Install `gosl` package:
+Install `gosl` package:
 
 ```bash
 go get github.com/koddr/gosl
 ```
 
-2️⃣ Add needed snippet to your Go program, like this:
+Add needed snippet to your Go program, like this:
 
 ```go
 package main

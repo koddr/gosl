@@ -2,9 +2,9 @@ package gosl
 
 import "strings"
 
-// ContainsCaseInsensitive function to report if substr is within s.
-// Case-insensitive for `s` and `substr` values by default. Using built-in
-// "strings" package with strings.Contains function.
+// ContainsCaseInsensitive reports if substr is within s string using built-in
+// "strings" package with strings.Contains. Case-insensitive for input values by
+// default.
 //
 // If s and/or substr have a zero value returns false value for a bool.
 //
@@ -34,7 +34,7 @@ func ContainsCaseInsensitive(s, substr string) bool {
 	return strings.Contains(strings.ToLower(s), strings.ToLower(substr))
 }
 
-// ContainsInSlice generic function to report if value T is within slice []T.
+// ContainsInSlice reports if value T is within slice []T.
 //
 // If s have a zero value returns false value for a bool.
 //
@@ -70,7 +70,7 @@ func ContainsInSlice[T comparable](s []T, value T) bool {
 	return false
 }
 
-// ContainsInMap generic function to report if key T is within map[T]K.
+// ContainsInMap reports if key T is within map[T]K.
 //
 // If m have a zero value returns false value for a bool.
 //

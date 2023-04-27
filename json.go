@@ -2,10 +2,9 @@ package gosl
 
 import jsoniter "github.com/json-iterator/go"
 
-// Marshal generic function to marshal struct *T to JSON data (byte slice).
-// Using jsoniter.Marshal function with a default configuration
-// (jsoniter.ConfigCompatibleWithStandardLibrary). A 100% compatible drop-in
-// replacement of "encoding/json" standard lib.
+// Marshal converts struct *T to JSON data (byte slice) using jsoniter.Marshal
+// with a default configuration. A 100% compatible drop-in replacement of
+// "encoding/json" standard lib.
 //
 // If err != nil returns nil value for a byte slice and error.
 //
@@ -21,12 +20,12 @@ import jsoniter "github.com/json-iterator/go"
 //	)
 //
 //	type user struct {
-//		Id   int    `json:"id"`
+//		ID   int    `json:"id"`
 //		Name string `json:"name"`
 //	}
 //
 //	func main() {
-//		u := &user{Id: 1, Name: "Viktor"}
+//		u := &user{ID: 1, Name: "Viktor"}
 //
 //		json, err := gosl.Marshal(u)
 //		if err != nil {
@@ -39,9 +38,8 @@ func Marshal[T any](model *T) ([]byte, error) {
 	return jsoniter.ConfigCompatibleWithStandardLibrary.Marshal(&model)
 }
 
-// Unmarshal generic function to unmarshal JSON data (byte slice) to struct *T.
-// Using jsoniter.Unmarshal function with a default configuration
-// (jsoniter.ConfigCompatibleWithStandardLibrary). A 100% compatible drop-in
+// Unmarshal converts JSON data (byte slice) to struct *T using
+// jsoniter.Unmarshal with a default configuration. A 100% compatible drop-in
 // replacement of "encoding/json" standard lib.
 //
 // If err != nil returns nil value for a struct and error.
@@ -58,7 +56,7 @@ func Marshal[T any](model *T) ([]byte, error) {
 //	)
 //
 //	type user struct {
-//		Id   int    `json:"id"`
+//		ID   int    `json:"id"`
 //		Name string `json:"name"`
 //	}
 //

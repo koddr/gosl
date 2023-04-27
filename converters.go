@@ -5,8 +5,8 @@ import (
 	"unsafe"
 )
 
-// ToBytes function to convert string to byte slice. Using built-in "unsafe"
-// package with unsafe.Slice function.
+// ToBytes converts string to byte slice using the built-in "unsafe" package
+// with unsafe.Slice function.
 //
 // If err != nil returns nil value for a byte slice and error.
 //
@@ -31,16 +31,16 @@ import (
 //
 //		fmt.Println(string(b))
 //	}
-func ToBytes(str string) ([]byte, error) {
-	if str == "" {
+func ToBytes(s string) ([]byte, error) {
+	if s == "" {
 		return nil, errors.New("can't convert empty string to byte slice")
 	}
-	
-	return unsafe.Slice(unsafe.StringData(str), len(str)), nil
+
+	return unsafe.Slice(unsafe.StringData(s), len(s)), nil
 }
 
-// ToString function to convert byte slice to string. Using built-in "unsafe"
-// package with unsafe.String function.
+// ToString converts byte slice to string using the built-in "unsafe" package
+// with unsafe.String function.
 //
 // If err != nil returns "" (empty) value for a string and error.
 //
@@ -65,10 +65,10 @@ func ToBytes(str string) ([]byte, error) {
 //
 //		fmt.Println(s)
 //	}
-func ToString(byteSlice []byte) (string, error) {
-	if byteSlice == nil {
+func ToString(b []byte) (string, error) {
+	if b == nil {
 		return "", errors.New("can't convert nil byte slice to string")
 	}
-	
-	return unsafe.String(unsafe.SliceData(byteSlice), len(byteSlice)), nil
+
+	return unsafe.String(unsafe.SliceData(b), len(b)), nil
 }
