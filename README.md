@@ -3,7 +3,7 @@
 The **Go Snippet Library** (_or **gosl** for a short_) provides **snippets** 
 collection for working with routine operations in your **Go** programs with 
 a super **user-friendly** API and the most efficient performance (see the 
-[benchmarks](#-benchmarks) section).
+[benchmarks](https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks) section).
 
 ## ⚡️ Quick start
 
