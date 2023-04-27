@@ -83,10 +83,9 @@ func (a *App) handleSomething() error {
 
 ## ✨ Usage
 
-Basic usage of all functions in the `gosl` package.
+Basic usage and full code examples of all functions of the `gosl` package you can find on the [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
 
-> 💡 Hint: you can find useful documentation and full code examples on the 
-> [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
+The package offers two categories of snippets: **regular** and **universal** using generics (Go 1.18+). Also, note that some features will only work correctly on Go 1.20 and above.
 
 ## 🔨 Regular functions
 
@@ -130,9 +129,9 @@ substr := "o"
 b := gosl.ContainsCaseInsensitive(s, substr)
 ```
 
-## 🛠️ Generic functions
+## 🛠️ Universal functions
 
-The generic functions of the `gosl` package are aimed at solving one 
+The universal (or _generic_) functions of the `gosl` package are aimed at solving one 
 particular task with the smallest possible allocation of your machine's 
 resources, but can be applied to a huge number of user types.
 
