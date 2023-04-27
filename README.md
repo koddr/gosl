@@ -235,4 +235,4 @@ BenchmarkContainsInMap-8                        	19090268	        62.58 ns/op	  
 ## ⚠️ License
 
 [`gosl`](https://github.com/koddr/gosl) is free and open-source software licensed under the [Apache 2.0 License](LICENSE), 
-created and supported with 🩵 by [Vic Shóstak](https://github.com/koddr).
+created and supported with 🩵 for people and robots by [Vic Shóstak](https://github.com/koddr).
