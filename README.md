@@ -88,12 +88,12 @@ Basic usage of all functions in the `gosl` package.
 > 💡 Hint: you can find useful documentation and full code examples on the 
 > [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
 
-### Regular functions
+## 🔨 Regular functions
 
 The regular functions of the `gosl` package are aimed at solving one single 
 task with the smallest possible allocation of your machine's resources.
 
-#### ToString
+### ToString
 
 Convert byte slice `b` to string or error:
 
@@ -106,7 +106,7 @@ if err != nil {
 }
 ```
 
-#### ToBytes
+### ToBytes
 
 Convert string `s` to byte slice or error:
 
@@ -119,7 +119,7 @@ if err != nil {
 }
 ```
 
-#### ContainsCaseInsensitive
+### ContainsCaseInsensitive
 
 Report if string `substr` is within string `s` (case-insensitive by default):
 
@@ -130,7 +130,7 @@ substr := "o"
 b := gosl.ContainsCaseInsensitive(s, substr)
 ```
 
-### Generic functions
+## 🛠️ Generic functions
 
 The generic functions of the `gosl` package are aimed at solving one 
 particular task with the smallest possible allocation of your machine's 
@@ -140,7 +140,7 @@ resources, but can be applied to a huge number of user types.
 > writing a regular function for each of your types, just use **one generic 
 > function** from the list below.
 
-#### Marshal
+### Marshal
 
 Marshal struct `user` to JSON data `j` (byte slice) or error:
 
@@ -161,7 +161,7 @@ if err != nil {
 This generic function is a 100% compatible drop-in replacement for the standard 
 [encoding/json](https://pkg.go.dev/encoding/json) library.
 
-#### Unmarshal
+### Unmarshal
 
 Unmarshal JSON data `j` (byte slice) to struct `user` or error:
 
@@ -183,7 +183,7 @@ if err != nil {
 This generic function is a 100% compatible drop-in replacement for the standard 
 [encoding/json](https://pkg.go.dev/encoding/json) library.
 
-#### ContainsInSlice
+### ContainsInSlice
 
 Report if value `v` is within slice `s`:
 
@@ -194,7 +194,7 @@ v := "two"
 b := gosl.ContainsInSlice(s, v)
 ```
 
-#### ContainsInMap
+### ContainsInMap
 
 Report if key `k` is within map `m`:
 
