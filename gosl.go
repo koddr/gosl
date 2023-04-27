@@ -1,6 +1,6 @@
 // Package gosl provides snippets collection for working with routine operations
 // in your Go programs with a super user-friendly API and the most efficient
-// performance
+// performance.
 package gosl
 
 type Utility struct{}

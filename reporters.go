@@ -92,7 +92,7 @@ func ContainsInSlice[T comparable](s []T, value T) bool {
 //
 //		fmt.Println(b)
 //	}
-func ContainsInMap[T comparable, K any](m map[T]K, key T) bool {
+func ContainsInMap[T any, K comparable](m map[K]T, key K) bool {
 	if m == nil {
 		return false
 	}
