@@ -23,11 +23,7 @@ Add needed snippet to your Go program, like this:
 ```go
 package main
 
-import (
-    // ...
-
-    "github.com/koddr/gosl"
-)
+import "github.com/koddr/gosl"
 
 type user struct {
     ID   int    `json:"id"`
@@ -55,11 +51,7 @@ func main() {
 ```go
 package main
 
-import (
-    // ...
-
-    "github.com/koddr/gosl"
-)
+import "github.com/koddr/gosl"
 
 type App struct {
     // ...
