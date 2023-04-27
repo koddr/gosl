@@ -175,6 +175,9 @@ if err != nil {
 }
 ```
 
+This generic function is a 100% compatible drop-in replacement for the standard 
+[encoding/json](https://pkg.go.dev/encoding/json) library.
+
 #### ContainsInSlice
 
 Report if value `v` is within slice `s`:
