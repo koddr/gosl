@@ -21,8 +21,6 @@ go get github.com/koddr/gosl
 Add needed snippet to your Go program, like this:
 
 ```go
-package main
-
 import "github.com/koddr/gosl"
 
 type user struct {
@@ -49,8 +47,6 @@ func main() {
 ...or like this to have access to snippets as embedded struct:
 
 ```go
-package main
-
 import "github.com/koddr/gosl"
 
 type App struct {
