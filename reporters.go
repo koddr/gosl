@@ -6,7 +6,7 @@ import "strings"
 // "strings" package with strings.Contains. Case-insensitive for input values by
 // default.
 //
-// If s and/or substr have a zero value returns false value for a bool.
+// If s and/or substr have a zero-value returns false value for a bool.
 //
 // Example:
 //
@@ -72,7 +72,7 @@ func ContainsInSlice[T comparable](s []T, value T) bool {
 
 // ContainsInMap reports if key T is within map[T]K.
 //
-// If m have a zero value returns false value for a bool.
+// If m have a zero-value returns false value for a bool.
 //
 // Example:
 //

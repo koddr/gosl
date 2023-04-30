@@ -1,14 +1,18 @@
 # gosl – The Go Snippet Library
 
-<img src="https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;
-<img src="https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none" alt="code coverage" />&nbsp;
-<a href="https://goreportcard.com/report/github.com/koddr/gosl" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;
+<img src="https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go" alt="go version" />
+&nbsp;
+<img src="https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none" alt="code coverage" />
+&nbsp;
+<a href="https://goreportcard.com/report/github.com/koddr/gosl" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>
+&nbsp;
 <img src="https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none" alt="license" />
 
-The **Go Snippet Library** (_or **gosl** for a short_) provides **snippets** 
-collection for working with routine operations in your **Go** programs with 
-a super **user-friendly** API and the most efficient performance (see the 
-[benchmarks](https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks) section).
+The **Go Snippet Library** (_or **gosl** for a short_) provides **a snippet
+collection** for working with routine operations in your **Go** programs with
+a super **user-friendly** API and the most **efficient performance** (see the
+[benchmarks](https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks)
+section).
 
 ## ⚡️ Quick start
 
@@ -52,8 +56,8 @@ import "github.com/koddr/gosl"
 type App struct {
     // ...
     
-    utils    *gosl.Utility                  // add regular snippets
-    genUtils *gosl.GenericUtility[any, any] // add generic snippets
+    utils    *gosl.Utility                         // add regular snippets
+    genUtils *gosl.GenericUtility[any, comparable] // add generic snippets
 }
 
 func (a *App) handleSomething() error {
@@ -71,14 +75,53 @@ func (a *App) handleSomething() error {
 
 ## ✨ Usage
 
-Basic usage and full code examples of all functions of the `gosl` package you can find on the [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
+Basic usage and full code examples of all functions of the `gosl` package you
+can find on the [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
 
-The package provides two categories of functions: **regular** and **universal** using generics (Go 1.18+). Also, note that some features will only work correctly on Go 1.20 and above.
+The package provides two categories of functions: **regular** and **universal**
+using generics (Go 1.18+). Also, note that some features will only work
+correctly on Go 1.20 and above.
 
 ## 🔨 Regular functions
 
-The regular functions of the `gosl` package are aimed at solving one single 
+The regular functions of the `gosl` package are aimed at solving one single
 task with the smallest possible allocation of your machine's resources.
+
+### Concat
+
+Concatenate strings `s` to the one string:
+
+```go
+s1 := "this "
+s2 := "is "
+s3 := "my string"
+
+s := gosl.Concat(s1, s2, s3)
+```
+
+### ContainsCaseInsensitive
+
+Report if string `substr` is within string `s` (case-insensitive by default):
+
+```go
+s := "Hello, WORLD!"
+substr := "r"
+
+b := gosl.ContainsCaseInsensitive(s, substr)
+```
+
+### RandomString
+
+Generates a (really) random string with a given size:
+
+```go
+size := 8
+
+s, err := gosl.RandomString(size)
+if err != nil {
+log.Fatal(err)
+}
+```
 
 ### ToString
 
@@ -106,26 +149,38 @@ if err != nil {
 }
 ```
 
-### ContainsCaseInsensitive
-
-Report if string `substr` is within string `s` (case-insensitive by default):
-
-```go
-s := "Hello, World!"
-substr := "o"
-
-b := gosl.ContainsCaseInsensitive(s, substr)
-```
-
 ## 🛠️ Universal functions
 
-The universal (or _generic_) functions of the `gosl` package are aimed at solving one 
-particular task with the smallest possible allocation of your machine's 
+The universal (or _generic_) functions of the `gosl` package are aimed at
+solving one
+particular task with the smallest possible allocation of your machine's
 resources, but can be applied to a huge number of user types.
 
-> 💡 Hint: enjoy the benefits of using Go 1.18+ generics today! Instead of 
-> writing a regular function for each of your types, just use **one generic 
+> 💡 Hint: enjoy the benefits of using Go 1.18+ generics today! Instead of
+> writing a regular function for each of your types, just use **one generic
 > function** from the list below.
+
+### ContainsInSlice
+
+Report if value `v` is within slice `s`:
+
+```go
+s := []string{"one", "two", "three"}
+v := "two"
+
+b := gosl.ContainsInSlice(s, v)
+```
+
+### ContainsInMap
+
+Report if key `k` is within map `m`:
+
+```go
+m := map[string]int{"one": 1, "two": 2, "three": 3}
+k := "two"
+
+b := gosl.ContainsInMap(m, k)
+```
 
 ### Marshal
 
@@ -170,28 +225,6 @@ if err != nil {
 This generic function is a 100% compatible drop-in replacement for the standard 
 [encoding/json](https://pkg.go.dev/encoding/json) library.
 
-### ContainsInSlice
-
-Report if value `v` is within slice `s`:
-
-```go
-s := []string{"one", "two", "three"}
-v := "two"
-
-b := gosl.ContainsInSlice(s, v)
-```
-
-### ContainsInMap
-
-Report if key `k` is within map `m`:
-
-```go
-m := map[string]int{"one": 1, "two": 2, "three": 3}
-k := "two"
-
-b := gosl.ContainsInMap(m, k)
-```
-
 ## ⏱️ Benchmarks
 
 Run benchmarks on your machine by following command:
@@ -204,28 +237,32 @@ And this is my results for all functions on test stand (Apple Macbook
 Air M1, 16 Gb RAM, macOS 13.3.1):
 
 ```bash
-BenchmarkToString_HelloWorld-8                  	109688613	        10.58 ns/op	      16 B/op	       1 allocs/op
+BenchmarkConcat_String2-8                       	58663996	        20.06 ns/op	      32 B/op	       1 allocs/op
+BenchmarkConcat_String8-8                       	26829356	        44.16 ns/op	     128 B/op	       1 allocs/op
+BenchmarkConcat_String32-8                      	 9321133	       127.8 ns/op	     448 B/op	       1 allocs/op
 
-BenchmarkToBytes_HelloWorld-8                   	1000000000	       0.6284 ns/op	       0 B/op	       0 allocs/op
+BenchmarkToString_HelloWorld-8                  	100000000	        10.56 ns/op	      16 B/op	       1 allocs/op
 
-BenchmarkRandomString_Size1-8                   	 3708800	       324.4 ns/op	       6 B/op	       3 allocs/op
-BenchmarkRandomString_Size8-8                   	 3504384	       342.5 ns/op	      24 B/op	       3 allocs/op
-BenchmarkRandomString_Size64-8                  	 2303899	       517.5 ns/op	     160 B/op	       3 allocs/op
-BenchmarkRandomString_Size512-8                 	 1437823	       833.8 ns/op	    1280 B/op	       3 allocs/op
-BenchmarkRandomString_Size4096-8                	  189336	      6255 ns/op	   10240 B/op	       3 allocs/op
+BenchmarkToBytes_HelloWorld-8                   	1000000000	         0.6288 ns/op	   0 B/op	       0 allocs/op
 
-BenchmarkMarshal_StructField_4-8                	 8475444	       141.2 ns/op	      48 B/op	       3 allocs/op
-BenchmarkMarshal_StructField_16-8               	 2847366	       421.5 ns/op	     192 B/op	       3 allocs/op
+BenchmarkRandomString_Size1-8                   	 3488678	       344.6 ns/op	       6 B/op	       3 allocs/op
+BenchmarkRandomString_Size8-8                   	 3394548	       353.3 ns/op	      24 B/op	       3 allocs/op
+BenchmarkRandomString_Size64-8                  	 2313856	       517.9 ns/op	     160 B/op	       3 allocs/op
+BenchmarkRandomString_Size512-8                 	 1423572	       838.9 ns/op	    1280 B/op	       3 allocs/op
+BenchmarkRandomString_Size4096-8                	  185337	      6350 ns/op	   10240 B/op	       3 allocs/op
 
-BenchmarkUnmarshal_StructField_4-8              	 7032111	       169.9 ns/op	      32 B/op	       3 allocs/op
-BenchmarkUnmarshal_StructField_16-8             	  773876	      1553 ns/op	     864 B/op	      45 allocs/op
+BenchmarkMarshal_StructField_4-8                	 8584442	       139.9 ns/op	      48 B/op	       3 allocs/op
+BenchmarkMarshal_StructField_16-8               	 2838062	       420.8 ns/op	     192 B/op	       3 allocs/op
 
-BenchmarkContainsCaseInsensitive_HelloWorld-8   	24499107	        48.53 ns/op	      16 B/op	       1 allocs/op
-BenchmarkContainsCaseInsensitive_LoremIpsum-8   	 1804263	       663.4 ns/op	     448 B/op	       1 allocs/op
+BenchmarkUnmarshal_StructField_4-8              	 6960462	       169.3 ns/op	      32 B/op	       3 allocs/op
+BenchmarkUnmarshal_StructField_16-8             	  764182	      1553 ns/op	     864 B/op	      45 allocs/op
 
-BenchmarkContainsInSlice-8                      	122393043	        9.817 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContainsCaseInsensitive_HelloWorld-8   	24856041	        48.46 ns/op	      16 B/op	       1 allocs/op
+BenchmarkContainsCaseInsensitive_LoremIpsum-8   	 1797150	       695.9 ns/op	     448 B/op	       1 allocs/op
 
-BenchmarkContainsInMap-8                        	19090268	        62.58 ns/op	       0 B/op	       0 allocs/op
+BenchmarkContainsInSlice-8                      	122999034	         9.758 ns/op	   0 B/op	       0 allocs/op
+
+BenchmarkContainsInMap-8                        	19123504	        62.61 ns/op	       0 B/op	       0 allocs/op
 ```
 
 ## ⚠️ License
