@@ -71,7 +71,7 @@ func (a *App) handleSomething() error {
 
 ## ✨ Usage
 
-Basic usage and full code examples of all functions of the `gosl` package you
+Basic usage and full code examples of all functions of the `gosl` package, you
 can find on the [pkg.go.dev][gosl_go_dev_url] page.
 
 The package provides two categories of functions: **regular** and **universal**
@@ -108,7 +108,7 @@ b := gosl.ContainsCaseInsensitive(s, substr)
 
 ### RandomString
 
-Generates a (really) random string with a given size:
+Generates a (**really**) random string with a given size:
 
 ```go
 size := 8
@@ -268,23 +268,13 @@ BenchmarkContainsInMap-8                        	19123504	        62.61 ns/op	  
 and robots by [Vic Shóstak][author].
 
 [go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
-
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
-
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
-
 [code_coverage_img]: https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none
-
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
-
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
-
 [gosl_go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
-
 [encoding_json_url]: https://pkg.go.dev/encoding/json
-
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
-
 [gosl_url]: https://github.com/koddr/gosl
-
 [author]: https://github.com/koddr
