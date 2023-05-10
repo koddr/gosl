@@ -1,12 +1,14 @@
 # gosl – The Go Snippet Library
 
-<img src="https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<img src="https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none" alt="code coverage" />&nbsp;<a href="https://goreportcard.com/report/github.com/koddr/gosl" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none" alt="license" />
+![Go version][go_version_img]
+[![Go report][go_report_img]][go_report_url]
+![Code coverage][code_coverage_img]
+[![License][license_img]][license_url]
 
 The **Go Snippet Library** (_or **gosl** for a short_) provides **a snippet
 collection** for working with routine operations in your **Go** programs with
-a super **user-friendly** API and the most **efficient performance** (see the
-[benchmarks](https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks)
-section).
+a super **user-friendly** API and the most **efficient performance** (see
+the [benchmarks][benchmarks] section).
 
 ## ⚡️ Quick start
 
@@ -70,7 +72,7 @@ func (a *App) handleSomething() error {
 ## ✨ Usage
 
 Basic usage and full code examples of all functions of the `gosl` package you
-can find on the [pkg.go.dev](https://pkg.go.dev/github.com/koddr/gosl) page.
+can find on the [pkg.go.dev][gosl_go_dev_url] page.
 
 The package provides two categories of functions: **regular** and **universal**
 using generics (Go 1.18+). Also, note that some features will only work
@@ -194,8 +196,8 @@ if err != nil {
 }
 ```
 
-This generic function is a 100% compatible drop-in replacement for the standard 
-[encoding/json](https://pkg.go.dev/encoding/json) library.
+This generic function is a 100% compatible drop-in replacement for the standard
+[encoding/json][encoding_json_url] library.
 
 ### Unmarshal
 
@@ -216,8 +218,8 @@ if err != nil {
 }
 ```
 
-This generic function is a 100% compatible drop-in replacement for the standard 
-[encoding/json](https://pkg.go.dev/encoding/json) library.
+This generic function is a 100% compatible drop-in replacement for the standard
+[encoding/json][encoding_json_url] library.
 
 ## ⏱️ Benchmarks
 
@@ -261,5 +263,28 @@ BenchmarkContainsInMap-8                        	19123504	        62.61 ns/op	  
 
 ## ⚠️ License
 
-[`gosl`](https://github.com/koddr/gosl) is free and open-source software licensed under the [Apache 2.0 License](LICENSE), 
-created and supported with 🩵 for people and robots by [Vic Shóstak](https://github.com/koddr).
+[`gosl`][gosl_url] is free and open-source software licensed under the
+[Apache 2.0 License][license_url], created and supported with 🩵 for people
+and robots by [Vic Shóstak][author].
+
+[go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
+
+[go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
+
+[go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
+
+[code_coverage_img]: https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none
+
+[license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
+
+[license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
+
+[gosl_go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
+
+[encoding_json_url]: https://pkg.go.dev/encoding/json
+
+[benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
+
+[gosl_url]: https://github.com/koddr/gosl
+
+[author]: https://github.com/koddr
