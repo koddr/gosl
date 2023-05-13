@@ -12,13 +12,13 @@ the [benchmarks][benchmarks] section).
 
 ## ⚡️ Quick start
 
-Install `gosl` package:
+Simply add `gosl` to your project:
 
 ```bash
 go get github.com/koddr/gosl
 ```
 
-Add needed snippet to your Go program, like this:
+Add the needed snippet to your Go program, like this:
 
 ```go
 import "github.com/koddr/gosl"
