@@ -1,6 +1,6 @@
 # gosl – The Go Snippet Library
 
-![Go version][go_version_img]
+[![Go version][go_version_img]][gosl_go_dev_url]
 [![Go report][go_report_img]][go_report_url]
 ![Code coverage][code_coverage_img]
 [![License][license_img]][license_url]
