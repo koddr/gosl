@@ -115,7 +115,7 @@ size := 8
 
 s, err := gosl.RandomString(size)
 if err != nil {
-log.Fatal(err)
+    log.Fatal(err)
 }
 ```
 
