@@ -18,7 +18,7 @@ func BenchmarkMarshal_StructField_4(b *testing.B) {
 	u := &user{}
 
 	for i := 0; i < b.N; i++ {
-		Marshal[user](u)
+		Marshal(u)
 	}
 }
 
@@ -45,7 +45,7 @@ func BenchmarkMarshal_StructField_16(b *testing.B) {
 	u := &user{}
 
 	for i := 0; i < b.N; i++ {
-		Marshal[user](u)
+		Marshal(u)
 	}
 }
 
@@ -61,7 +61,7 @@ func BenchmarkUnmarshal_StructField_4(b *testing.B) {
 	d := []byte(`{"id":1,"name":"Viktor","email":"my@mail.com"}`)
 
 	for i := 0; i < b.N; i++ {
-		Unmarshal[user](d, u)
+		Unmarshal(d, u)
 	}
 }
 
@@ -89,7 +89,7 @@ func BenchmarkUnmarshal_StructField_16(b *testing.B) {
 	d := []byte(`{"id":1,"name":"Viktor","email":"my@mail.com","attr_1":"one","attr_2":"two","attr_3":"three","attr_4":"four","attr_5":"five","attr_6":"six","attr_7":"seven","attr_8":"eight","rel_1":"one","rel_2":"two","rel_3":"three","rel_4":"four",}`)
 
 	for i := 0; i < b.N; i++ {
-		Unmarshal[user](d, u)
+		Unmarshal(d, u)
 	}
 }
 

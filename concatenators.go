@@ -34,7 +34,7 @@ func Concat(s ...string) string {
 		n += len(s[i])
 	}
 
-	b := make([]byte, n, n)
+	b := make([]byte, n)
 
 	idx := 0
 	for i := 0; i < len(s); i++ {

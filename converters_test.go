@@ -27,10 +27,10 @@ func BenchmarkToBytes_HelloWorld(b *testing.B) {
 }
 
 func TestToString(t *testing.T) {
-	s, err := ToString(nil)
+	_, err := ToString(nil)
 	require.Error(t, err)
 
-	s, err = ToString([]byte(`hello, world`))
+	s, err := ToString([]byte(`hello, world`))
 	require.NoError(t, err)
 	assert.EqualValues(t, s, "hello, world", "should be equal")
 	assert.NotEqual(t, s, "wrong", "should not be equal")
@@ -47,10 +47,10 @@ func TestToString(t *testing.T) {
 }
 
 func TestToBytes(t *testing.T) {
-	b, err := ToBytes("")
+	_, err := ToBytes("")
 	require.Error(t, err)
 
-	b, err = ToBytes("hello, world")
+	b, err := ToBytes("hello, world")
 	require.NoError(t, err)
 	assert.EqualValues(t, b, []byte(`hello, world`), "should be equal")
 	assert.NotEqual(t, b, []byte(`wrong`), "should not be equal")
