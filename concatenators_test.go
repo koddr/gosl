@@ -83,4 +83,12 @@ func TestConcat(t *testing.T) {
 	assert.EqualValues(t, s, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "should be equal")
 	assert.NotEqual(t, s, "wrong", "should not be equal")
 
+	g := Utility{} // tests for method
+
+	s = g.Concat()
+	assert.EqualValues(t, s, "", "should be equal")
+
+	s = g.Concat("Lorem ipsum ", "dolor ", "sit amet, ", "consectetur ", "adipiscing elit")
+	assert.EqualValues(t, s, "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "should be equal")
+	assert.NotEqual(t, s, "wrong", "should not be equal")
 }

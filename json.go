@@ -6,7 +6,7 @@ import jsoniter "github.com/json-iterator/go"
 // with a default configuration. A 100% compatible drop-in replacement of
 // "encoding/json" standard lib.
 //
-// If err != nil returns nil value for a byte slice and error.
+// If err != nil returns zero-value for a byte slice and error.
 //
 // Example:
 //
@@ -42,7 +42,7 @@ func Marshal[T any](model *T) ([]byte, error) {
 // jsoniter.Unmarshal with a default configuration. A 100% compatible drop-in
 // replacement of "encoding/json" standard lib.
 //
-// If err != nil returns nil value for a struct and error.
+// If err != nil returns zero-value for a struct and error.
 //
 // Example:
 //

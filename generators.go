@@ -9,7 +9,7 @@ import (
 // RandomString generates a random string with a given size using built-in
 // "crypto/rand" and "encoding/hex" packages.
 //
-// If err != nil returns "" (empty) value for a string and error.
+// If err != nil returns zero-value for a string and error.
 //
 // Example:
 //

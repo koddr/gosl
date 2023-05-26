@@ -8,7 +8,7 @@ import (
 // ToBytes converts string to byte slice using the built-in "unsafe" package
 // with unsafe.Slice function.
 //
-// If err != nil returns nil value for a byte slice and error.
+// If err != nil returns zero-value for a byte slice and error.
 //
 // Example:
 //
@@ -42,7 +42,7 @@ func ToBytes(s string) ([]byte, error) {
 // ToString converts byte slice to string using the built-in "unsafe" package
 // with unsafe.String function.
 //
-// If err != nil returns "" (empty) value for a string and error.
+// If err != nil returns zero-value for a string and error.
 //
 // Example:
 //

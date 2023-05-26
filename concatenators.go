@@ -5,6 +5,8 @@ import "unsafe"
 // Concat concatenate strings using the built-in copy and "unsafe" package with
 // unsafe.String function.
 //
+// If s has no elements returns zero-value for a string.
+//
 // Example:
 //
 //	package main

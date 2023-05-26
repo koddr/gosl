@@ -115,9 +115,22 @@ size := 8
 
 s, err := gosl.RandomString(size)
 if err != nil {
-    log.Fatal(err)
+log.Fatal(err)
 }
 ```
+
+### RenderStyled
+
+Renders a styled string with a given `lipgloss.Style` template:
+
+```go
+t := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
+
+s := gosl.RenderStyled("This is a styled text", t)
+```
+
+This function is a more comfortable wrapper for the
+[charmbracelet/lipgloss][charmbracelet_lipgloss_url] library.
 
 ### ToString
 
@@ -233,28 +246,30 @@ And this is my results for all functions on test stand (Apple Macbook
 Air M1, 16 Gb RAM, macOS 13.3.1):
 
 ```bash
-BenchmarkConcat_String2-8                       	58663996	        20.06 ns/op	      32 B/op	       1 allocs/op
-BenchmarkConcat_String8-8                       	26829356	        44.16 ns/op	     128 B/op	       1 allocs/op
-BenchmarkConcat_String32-8                      	 9321133	       127.8 ns/op	     448 B/op	       1 allocs/op
+BenchmarkConcat_String2-8                       	59083364	        19.91 ns/op	      32 B/op	       1 allocs/op
+BenchmarkConcat_String8-8                       	27004447	        44.21 ns/op	     128 B/op	       1 allocs/op
+BenchmarkConcat_String32-8                      	 9373778	       127.4 ns/op	     448 B/op	       1 allocs/op
 
 BenchmarkToString_HelloWorld-8                  	100000000	        10.56 ns/op	      16 B/op	       1 allocs/op
 
 BenchmarkToBytes_HelloWorld-8                   	1000000000	         0.6288 ns/op	   0 B/op	       0 allocs/op
 
-BenchmarkRandomString_Size1-8                   	 3488678	       344.6 ns/op	       6 B/op	       3 allocs/op
-BenchmarkRandomString_Size8-8                   	 3394548	       353.3 ns/op	      24 B/op	       3 allocs/op
+BenchmarkRandomString_Size1-8                   	 3649489	       328.4 ns/op	       6 B/op	       3 allocs/op
+BenchmarkRandomString_Size8-8                   	 3397297	       351.8 ns/op	      24 B/op	       3 allocs/op
 BenchmarkRandomString_Size64-8                  	 2313856	       517.9 ns/op	     160 B/op	       3 allocs/op
-BenchmarkRandomString_Size512-8                 	 1423572	       838.9 ns/op	    1280 B/op	       3 allocs/op
-BenchmarkRandomString_Size4096-8                	  185337	      6350 ns/op	   10240 B/op	       3 allocs/op
+BenchmarkRandomString_Size512-8                 	 1425562	       837.8 ns/op	    1280 B/op	       3 allocs/op
+BenchmarkRandomString_Size4096-8                	  186254	      6331 ns/op	   10240 B/op	       3 allocs/op
 
 BenchmarkMarshal_StructField_4-8                	 8584442	       139.9 ns/op	      48 B/op	       3 allocs/op
-BenchmarkMarshal_StructField_16-8               	 2838062	       420.8 ns/op	     192 B/op	       3 allocs/op
+BenchmarkMarshal_StructField_16-8               	 2879486	       416.6 ns/op	     192 B/op	       3 allocs/op
 
 BenchmarkUnmarshal_StructField_4-8              	 6960462	       169.3 ns/op	      32 B/op	       3 allocs/op
-BenchmarkUnmarshal_StructField_16-8             	  764182	      1553 ns/op	     864 B/op	      45 allocs/op
+BenchmarkUnmarshal_StructField_16-8             	  774032	      1534 ns/op	     864 B/op	      45 allocs/op
+
+BenchmarkRenderStyled-8                         	 1459971	       821.5 ns/op	     440 B/op	      12 allocs/op
 
 BenchmarkContainsCaseInsensitive_HelloWorld-8   	24856041	        48.46 ns/op	      16 B/op	       1 allocs/op
-BenchmarkContainsCaseInsensitive_LoremIpsum-8   	 1797150	       695.9 ns/op	     448 B/op	       1 allocs/op
+BenchmarkContainsCaseInsensitive_LoremIpsum-8   	 1827114	       656.4 ns/op	     448 B/op	       1 allocs/op
 
 BenchmarkContainsInSlice-8                      	122999034	         9.758 ns/op	   0 B/op	       0 allocs/op
 
@@ -274,7 +289,11 @@ and robots by [Vic Shóstak][author].
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
 [gosl_go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
+
 [encoding_json_url]: https://pkg.go.dev/encoding/json
+
+[charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
+
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
 [gosl_url]: https://github.com/koddr/gosl
 [author]: https://github.com/koddr
