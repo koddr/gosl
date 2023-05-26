@@ -310,29 +310,16 @@ Your PRs & issues are welcome! Thank you 😘
 and robots by [Vic Shóstak][author].
 
 [go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
-
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
-
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
-
 [code_coverage_img]: https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none
-
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
-
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
-
 [gosl_go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
-
 [gosl_issues_url]: https://github.com/koddr/gosl/issues
-
 [gosl_pull_request_url]: https://github.com/koddr/gosl/pulls
-
 [encoding_json_url]: https://pkg.go.dev/encoding/json
-
 [charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
-
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
-
 [gosl_url]: https://github.com/koddr/gosl
-
 [author]: https://github.com/koddr
