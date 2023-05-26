@@ -296,10 +296,8 @@ And now, I invite you to participate in this project! Let's work **together** to
 create the **largest** and **most useful** library of snippets for Go
 programs on the web today.
 
-- Ask questions and submit your features to the [Issues][gosl_issues_url]
-  section.
-- Send your snippets or improvements to the current to the [Pull requests]
-  [gosl_pull_request_url] section.
+- [Issues][gosl_issues_url]: ask questions and submit your features.
+- [Pull requests][gosl_pull_request_url]: send your snippets or improvements to the current.
 
 Your PRs & issues are welcome! Thank you 😘
 
