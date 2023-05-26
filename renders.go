@@ -20,9 +20,9 @@ import "github.com/charmbracelet/lipgloss"
 //	)
 //
 //	func main() {
-//		t := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
+//		tmpl := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
 //
-//		s := gosl.RenderStyled("This is a styled text", t)
+//		s := gosl.RenderStyled("This is a styled text", tmpl)
 //
 //		fmt.Println(s)
 //	}

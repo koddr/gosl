@@ -124,9 +124,9 @@ if err != nil {
 Renders a styled string with a given `lipgloss.Style` template:
 
 ```go
-t := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
+tmpl := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
 
-s := gosl.RenderStyled("This is a styled text", t)
+s := gosl.RenderStyled("This is a styled text", tmpl)
 ```
 
 This function is a more comfortable wrapper for the
