@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/charmbracelet/lipgloss v0.7.1
 	github.com/json-iterator/go v1.1.12
-	github.com/stretchr/testify v1.8.3
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
