@@ -1,4 +1,4 @@
-name: Test and coverage
+name: Linter
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           cache: false
-      - name: Run coverage
-        run: go test -race -coverprofile=coverage.out -covermode=atomic
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Install go-critic linter
+        run: go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
+      - name: Run go-critic linter
+        run: gocritic check -enableAll ./...
