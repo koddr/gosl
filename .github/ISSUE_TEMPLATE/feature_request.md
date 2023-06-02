@@ -4,7 +4,6 @@ about: Suggest an idea for this project
 title: ''
 labels: enhancement
 assignees: koddr
-
 ---
 
 <!-- ⚡️ Please create a discussion BEFORE submitting a pull request! ⚡️ -->
