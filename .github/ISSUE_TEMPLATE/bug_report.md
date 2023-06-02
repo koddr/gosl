@@ -7,14 +7,13 @@ assignees: koddr
 
 ---
 
-<!-- ⚡️ Please find a similar issue BEFORE submitting a new bug report! ⚡️ -->
+<!-- ⚡️ Please find a similar issue BEFORE submitting! ⚡️ -->
 
 **Required check list:**
 
 - [ ] I didn't find in the repository's issues section a similar bug.
 - [ ] I understand, this is an Open Source and not-for-profit product.
-- [ ] This is not about a third-party project, framework, package, or
-  technology.
+- [ ] This is not about a third-party project, framework, or technology.
 
 **My environment:**
 
