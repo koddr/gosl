@@ -3,6 +3,9 @@ project_name: gosl
 env_files:
   github_token: ~/.github_token
 
+builds:
+  - skip: true
+
 release:
   draft: true
   replace_existing_draft: true
