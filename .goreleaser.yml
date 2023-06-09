@@ -39,7 +39,7 @@ release:
   skip_upload: true
 
 changelog:
-  use: git
+  use: github
   sort: asc
   abbrev: -1
   filters:
