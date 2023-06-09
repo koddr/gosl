@@ -1,6 +1,6 @@
 # gosl – The Go Snippet Library
 
-[![Go version][go_version_img]][gosl_go_dev_url]
+[![Go version][go_version_img]][go_dev_url]
 [![Go report][go_report_img]][go_report_url]
 ![Code coverage][code_coverage_img]
 [![License][license_img]][license_url]
@@ -72,7 +72,7 @@ func (a *App) handleSomething() error {
 ## ✨ Usage
 
 Basic usage and full code examples of all functions of the `gosl` package, you
-can find on the [pkg.go.dev][gosl_go_dev_url] page.
+can find on the [pkg.go.dev][go_dev_url] page.
 
 The package provides two categories of functions: **regular** and **universal**
 using generics (Go 1.18+). Also, note that some features will only work
@@ -322,29 +322,42 @@ And now, I invite you to participate in this project! Let's work **together** to
 create the **largest** and **most useful** library of snippets for Go
 programs on the web today.
 
-- [Issues][gosl_issues_url]: ask questions and submit your features.
-- [Pull requests][gosl_pull_request_url]: send your snippets or improvements
+- [Issues][repo_issues_url]: ask questions and submit your features.
+- [Pull requests][repo_pull_request_url]: send your snippets or improvements
   to the current.
 
 Your PRs & issues are welcome! Thank you 😘
 
 ## ⚠️ License
 
-[`gosl`][gosl_url] is free and open-source software licensed under the
+[`gosl`][repo_url] is free and open-source software licensed under the
 [Apache 2.0 License][license_url], created and supported with 🩵 for people
 and robots by [Vic Shóstak][author].
 
 [go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
+
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
+
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
+
+[go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
+
 [code_coverage_img]: https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none
+
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
+
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
-[gosl_go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
-[gosl_issues_url]: https://github.com/koddr/gosl/issues
-[gosl_pull_request_url]: https://github.com/koddr/gosl/pulls
+
+[repo_url]: https://github.com/koddr/gosl
+
+[repo_issues_url]: https://github.com/koddr/gosl/issues
+
+[repo_pull_request_url]: https://github.com/koddr/gosl/pulls
+
 [encoding_json_url]: https://pkg.go.dev/encoding/json
+
 [charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
+
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
-[gosl_url]: https://github.com/koddr/gosl
+
 [author]: https://github.com/koddr
