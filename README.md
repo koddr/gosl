@@ -169,6 +169,28 @@ resources, but can be applied to a huge number of user types.
 > writing a regular function for each of your types, just use **one generic
 > function** from the list below.
 
+### Equals
+
+Compare two values of type `T`, return `true` if they are equal:
+
+```go
+s1 := "hello"
+s2 := "hello"
+
+b := gosl.Equals(s1, s2)
+```
+
+### NotEquals
+
+Compare two values of type `T`, return `true` if they are **not** equal:
+
+```go
+s1 := 42
+s2 := 64
+
+b := gosl.NotEquals(s1, s2)
+```
+
 ### ContainsInSlice
 
 Report if value `v` is within slice `s`:
@@ -246,6 +268,10 @@ And this is my results for all functions on test stand (Apple Macbook
 Air M1, 16 Gb RAM, macOS 13.3.1):
 
 ```bash
+BenchmarkEquals-8                               	319768486	         3.591 ns/op	       0 B/op	       0 allocs/op
+
+BenchmarkNotEquals-8                            	1000000000	         0.5136 ns/op	       0 B/op	       0 allocs/op
+
 BenchmarkConcat_String2-8                       	59083364	        19.91 ns/op	      32 B/op	       1 allocs/op
 BenchmarkConcat_String8-8                       	27004447	        44.21 ns/op	     128 B/op	       1 allocs/op
 BenchmarkConcat_String32-8                      	 9373778	       127.4 ns/op	     448 B/op	       1 allocs/op

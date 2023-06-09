@@ -75,6 +75,16 @@ func (g *GenericUtility[T, K]) ContainsInMap(m map[K]T, key K) bool {
 	return ContainsInMap(m, key)
 }
 
+// Equals compares two values of type K, returns true if they are equal.
+func (g *GenericUtility[T, K]) Equals(value1, value2 K) bool {
+	return Equals(value1, value2)
+}
+
+// NotEquals compares two values of type K, returns true if they are not equal.
+func (g *GenericUtility[T, K]) NotEquals(value1, value2 K) bool {
+	return NotEquals(value1, value2)
+}
+
 // Marshal converts struct *T to JSON data (byte slice) using jsoniter.Marshal
 // with a default configuration. A 100% compatible drop-in replacement of
 // "encoding/json" standard lib.
