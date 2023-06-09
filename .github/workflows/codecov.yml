@@ -23,6 +23,8 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           cache: false
+      - name: Download Go dependencies
+        run: go mod download
       - name: Run coverage
         run: go test -race -coverprofile=coverage.out -covermode=atomic
       - name: Upload coverage to Codecov
