@@ -26,3 +26,6 @@ vendor/
 
 # GoReleaser directories
 dist/
+
+# Binnary directories
+bin/
