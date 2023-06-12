@@ -1,6 +1,6 @@
-// Package gosl provides a snippet collection for working with routine
-// operations in your Go programs with a super user-friendly API and the most
-// efficient performance.
+// Package gosl provides a snippet collection for working with routine operations
+// in your Go programs with a super user-friendly API and the most efficient
+// performance.
 package gosl
 
 import "github.com/charmbracelet/lipgloss"
@@ -27,6 +27,16 @@ func (u *Utility) Concat(s ...string) string {
 // If s and/or substr have an "" (empty) value returns false for a bool.
 func (u *Utility) ContainsCaseInsensitive(s, substr string) bool {
 	return ContainsCaseInsensitive(s, substr)
+}
+
+// IsFileExist reports whether a file exists on the specified path.
+func (u *Utility) IsFileExist(path string) bool {
+	return IsFileExist(path)
+}
+
+// IsDirExist reports whether a dir exists on the specified path.
+func (u *Utility) IsDirExist(path string) bool {
+	return IsDirExist(path)
 }
 
 // RandomString generates a random string with a given size using built-in

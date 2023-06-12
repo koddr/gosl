@@ -1,12 +1,15 @@
 package gosl
 
-import "strings"
+import (
+	"os"
+	"strings"
+)
 
 // ContainsCaseInsensitive reports if substr is within s string using built-in
 // "strings" package with strings.Contains. Case-insensitive for input values by
 // default.
 //
-// If s and/or substr have an "" (empty) value returns false for a bool.
+// If s and/or substr have a zero-value, returns false for bool.
 //
 // Example:
 //
@@ -36,7 +39,7 @@ func ContainsCaseInsensitive(s, substr string) bool {
 
 // ContainsInSlice reports if value T is within slice []T.
 //
-// If s have a zero-value returns false for a bool.
+// If s has a zero-value, returns false for bool.
 //
 // Example:
 //
@@ -72,7 +75,7 @@ func ContainsInSlice[T comparable](s []T, value T) bool {
 
 // ContainsInMap reports if key T is within map[T]K.
 //
-// If m have a zero-value returns false for a bool.
+// If m has a zero-value, returns false for bool.
 //
 // Example:
 //
@@ -102,4 +105,80 @@ func ContainsInMap[T any, K comparable](m map[K]T, key K) bool {
 	}
 
 	return false
+}
+
+// IsFileExist reports whether a file exists on the specified path.
+//
+// If path has a zero-value or is dir, returns false for bool.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"fmt"
+//
+//		"github.com/koddr/gosl"
+//	)
+//
+//	func main() {
+//		p := filepath.Clean("~/Downloads/file.csv")
+//
+//		b := gosl.IsFileExist(p)
+//
+//		fmt.Println(b)
+//	}
+func IsFileExist(path string) bool {
+	// Check, if the specified path has a zero-value.
+	if path == "" {
+		return false
+	}
+
+	// Get stat of the specified path or error.
+	file, err := os.Stat(path)
+
+	// Check, if file is not dir.
+	if file.IsDir() {
+		return false
+	}
+
+	return err == nil || !os.IsNotExist(err)
+}
+
+// IsDirExist reports whether a dir exists on the specified path.
+//
+// If path has a zero-value or is file, returns false for bool.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"fmt"
+//
+//		"github.com/koddr/gosl"
+//	)
+//
+//	func main() {
+//		p := filepath.Clean("~/Downloads/my-folder")
+//
+//		b := gosl.IsDirExist(p)
+//
+//		fmt.Println(b)
+//	}
+func IsDirExist(path string) bool {
+	// Check, if the specified path has a zero-value.
+	if path == "" {
+		return false
+	}
+
+	// Get stat of the specified path or error.
+	dir, err := os.Stat(path)
+
+	// Check, if dir is not file.
+	if !dir.IsDir() {
+		return false
+	}
+
+	return err == nil || !os.IsNotExist(err)
 }

@@ -1,6 +1,8 @@
 package gosl
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -31,6 +33,29 @@ func BenchmarkContainsInMap(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		ContainsInMap(map[string]int{"hello": 1, "world": 2, "one": 3, "two": 4, "three": 5}, "two")
 	}
+}
+
+func BenchmarkIsFileExist(b *testing.B) {
+	file := filepath.Clean("./bin/my-folder/my-file.txt")
+	_ = os.MkdirAll(filepath.Dir(file), 0o755)
+	_ = os.WriteFile(file, []byte("Hello"), 0o755)
+
+	for i := 0; i < b.N; i++ {
+		IsFileExist(file)
+	}
+
+	_ = os.RemoveAll(filepath.Dir(file))
+}
+
+func BenchmarkIsDirExist(b *testing.B) {
+	dir := filepath.Clean("./bin/my-folder")
+	_ = os.MkdirAll(dir, 0o755)
+
+	for i := 0; i < b.N; i++ {
+		IsDirExist(dir)
+	}
+
+	_ = os.RemoveAll(dir)
 }
 
 func TestContainsCaseInsensitive(t *testing.T) {
@@ -95,4 +120,62 @@ func TestContainsInMap(t *testing.T) {
 
 	b = g.ContainsInMap(map[string]int{"hello": 1, "world": 2, "one": 3, "two": 4, "three": 5}, "four")
 	assert.EqualValues(t, b, false)
+}
+
+func TestIsFileExist(t *testing.T) {
+	b := IsFileExist("")
+	assert.EqualValues(t, b, false)
+
+	file := filepath.Clean("./bin/my-folder/my-file.txt")
+	_ = os.MkdirAll(filepath.Dir(file), 0o755)
+	_ = os.WriteFile(file, []byte("Hello"), 0o755)
+
+	b = IsFileExist(file)
+	assert.EqualValues(t, b, true)
+
+	b = IsFileExist(filepath.Dir(file))
+	assert.EqualValues(t, b, false)
+
+	g := Utility{} // tests for a method
+
+	b = g.IsFileExist("")
+	assert.EqualValues(t, b, false)
+
+	b = g.IsFileExist(file)
+	assert.EqualValues(t, b, true)
+
+	b = g.IsFileExist(filepath.Dir(file))
+	assert.EqualValues(t, b, false)
+
+	_ = os.RemoveAll(filepath.Dir(file))
+}
+
+func TestIsDirExist(t *testing.T) {
+	b := IsDirExist("")
+	assert.EqualValues(t, b, false)
+
+	dir := filepath.Clean("./bin/my-folder")
+	_ = os.MkdirAll(dir, 0o755)
+
+	b = IsDirExist(dir)
+	assert.EqualValues(t, b, true)
+
+	file := filepath.Clean("./bin/my-folder/my-file.txt")
+	_ = os.WriteFile(file, []byte("Hello"), 0o755)
+
+	b = IsDirExist(file)
+	assert.EqualValues(t, b, false)
+
+	g := Utility{} // tests for a method
+
+	b = g.IsDirExist("")
+	assert.EqualValues(t, b, false)
+
+	b = g.IsDirExist(dir)
+	assert.EqualValues(t, b, true)
+
+	b = g.IsDirExist(file)
+	assert.EqualValues(t, b, false)
+
+	_ = os.RemoveAll(filepath.Dir(dir))
 }

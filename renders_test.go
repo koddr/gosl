@@ -7,14 +7,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var resultPrinters string
+var resultRenders string
 
 func BenchmarkRenderStyled(b *testing.B) {
 	var r string
 	for i := 0; i < b.N; i++ {
 		r = RenderStyled("Hello, World!", lipgloss.NewStyle().Foreground(lipgloss.Color("42")))
 	}
-	resultGenerators = r
+	resultRenders = r
 }
 
 func TestRenderStyled(t *testing.T) {

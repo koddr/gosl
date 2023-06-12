@@ -85,25 +85,45 @@ task with the smallest possible allocation of your machine's resources.
 
 ### Concat
 
-Concatenate strings `s` to the one string:
+Concatenates strings `s` to the one string:
 
 ```go
 s1 := "this "
 s2 := "is "
 s3 := "my string"
 
-s := gosl.Concat(s1, s2, s3)
+s := gosl.Concat(s1, s2, s3) // "this is my string"
 ```
 
 ### ContainsCaseInsensitive
 
-Report if string `substr` is within string `s` (case-insensitive by default):
+Reports if string `substr` is within string `s` (case-insensitive by default):
 
 ```go
 s := "Hello, WORLD!"
 substr := "r"
 
-b := gosl.ContainsCaseInsensitive(s, substr)
+b := gosl.ContainsCaseInsensitive(s, substr) // true
+```
+
+### IsFileExist
+
+Reports whether a file exists on the specified `path`:
+
+```go
+p := filepath.Clean("~/Downloads/file.csv")
+
+b := gosl.IsFileExist(p) // true|false
+```
+
+### IsDirExist
+
+Reports whether a dir exists on the specified `path`:
+
+```go
+p := filepath.Clean("~/Downloads/my-folder")
+
+b := gosl.IsDirExist(p) // true|false
 ```
 
 ### RandomString
@@ -113,7 +133,7 @@ Generates a (**really**) random string with a given size:
 ```go
 size := 8
 
-s, err := gosl.RandomString(size)
+s, err := gosl.RandomString(size) // string, like "34f4ey7e"
 if err != nil {
     log.Fatal(err)
 }
@@ -126,7 +146,7 @@ Renders a styled string with a given `lipgloss.Style` template:
 ```go
 tmpl := lipgloss.NewStyle().Foreground(lipgloss.Color("42")).Margin(1)
 
-s := gosl.RenderStyled("This is a styled text", tmpl)
+s := gosl.RenderStyled("This is a styled text", tmpl) // styled string
 ```
 
 This function is a more comfortable wrapper for the
@@ -134,12 +154,12 @@ This function is a more comfortable wrapper for the
 
 ### ToString
 
-Convert byte slice `b` to string or error:
+Converts byte slice `b` to string or error:
 
 ```go
 b := []byte("Hello, World!")
 
-s, err := gosl.ToString(b)
+s, err := gosl.ToString(b) // "Hello, World!"
 if err != nil {
     log.Fatal(err)
 }
@@ -147,12 +167,12 @@ if err != nil {
 
 ### ToBytes
 
-Convert string `s` to byte slice or error:
+Converts string `s` to byte slice or error:
 
 ```go
 s := "Hello, World!"
 
-b, err := gosl.ToBytes(s)
+b, err := gosl.ToBytes(s) // [48 65 6c ...]
 if err != nil {
     log.Fatal(err)
 }
@@ -171,46 +191,46 @@ resources, but can be applied to a huge number of user types.
 
 ### Equals
 
-Compare two values of type `T`, return `true` if they are equal:
+Compares two values of type `T`, return `true` if they are equal:
 
 ```go
 s1 := "hello"
 s2 := "hello"
 
-b := gosl.Equals(s1, s2)
+b := gosl.Equals(s1, s2) // true
 ```
 
 ### NotEquals
 
-Compare two values of type `T`, return `true` if they are **not** equal:
+Compares two values of type `T`, return `true` if they are **not** equal:
 
 ```go
 s1 := 42
 s2 := 64
 
-b := gosl.NotEquals(s1, s2)
+b := gosl.NotEquals(s1, s2) // true
 ```
 
 ### ContainsInSlice
 
-Report if value `v` is within slice `s`:
+Reports if value `v` is within slice `s`:
 
 ```go
 s := []string{"one", "two", "three"}
 v := "two"
 
-b := gosl.ContainsInSlice(s, v)
+b := gosl.ContainsInSlice(s, v) // true
 ```
 
 ### ContainsInMap
 
-Report if key `k` is within map `m`:
+Reports if key `k` is within map `m`:
 
 ```go
 m := map[string]int{"one": 1, "two": 2, "three": 3}
 k := "two"
 
-b := gosl.ContainsInMap(m, k)
+b := gosl.ContainsInMap(m, k) // true
 ```
 
 ### Marshal
@@ -225,7 +245,7 @@ type user struct {
 
 u := &user{}
 
-j, err := gosl.Marshal(u)
+j, err := gosl.Marshal(u) // {"id": 0, "name": ""}
 if err != nil {
     log.Fatal(err)
 }
@@ -247,7 +267,7 @@ type user struct {
 j := []byte(`{"id":1,"name":"Viktor"}`)
 m := &user{}
 
-u, err := gosl.Unmarshal(j, m)
+u, err := gosl.Unmarshal(j, m) // [id:1 name:Viktor]
 if err != nil {
     log.Fatal(err)
 }
@@ -300,6 +320,10 @@ BenchmarkContainsCaseInsensitive_LoremIpsum-8   	 1827114	       656.4 ns/op	   
 BenchmarkContainsInSlice-8                      	122999034	         9.758 ns/op	   0 B/op	       0 allocs/op
 
 BenchmarkContainsInMap-8                        	19123504	        62.61 ns/op	       0 B/op	       0 allocs/op
+
+BenchmarkIsFileExist-8                          	  395916	      2941 ns/op	     240 B/op	       2 allocs/op
+
+BenchmarkIsDirExist-8                           	  437505	      2696 ns/op	     224 B/op	       2 allocs/op
 ```
 
 ## 💡 Motivation
@@ -335,29 +359,19 @@ Your PRs & issues are welcome! Thank you 😘
 and robots by [Vic Shóstak][author].
 
 [go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
-
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
-
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
 
 [go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
 
-[code_coverage_img]: https://img.shields.io/badge/code_coverage-98%25-success?style=for-the-badge&logo=none
+[code_coverage_img]: https://img.shields.io/badge/code_coverage-99%25-success?style=for-the-badge&logo=none
 
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
-
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
-
 [repo_url]: https://github.com/koddr/gosl
-
 [repo_issues_url]: https://github.com/koddr/gosl/issues
-
 [repo_pull_request_url]: https://github.com/koddr/gosl/pulls
-
 [encoding_json_url]: https://pkg.go.dev/encoding/json
-
 [charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
-
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
-
 [author]: https://github.com/koddr
