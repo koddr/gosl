@@ -237,7 +237,7 @@ b := gosl.ContainsInMap(m, k) // true
 
 Parses the given file from `path` to struct `*T` with an (_optional_) environment variables for a secret data.
 
-Set your secret data to environment variables with personal prefix (for ex., `MY_CONFIG`):
+Set your secret data to environment variables with a personal prefix (for ex., `MY_CONFIG`):
 
 ```console
 export MY_CONFIG_TOKEN=my-secret-1234567
