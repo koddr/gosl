@@ -95,6 +95,18 @@ func (g *GenericUtility[T, K]) NotEquals(value1, value2 K) bool {
 	return NotEquals(value1, value2)
 }
 
+// ParseFileWithEnvToStruct parses the given file from path to struct *T using
+// "knadh/koanf" lib with an (optional) environment variables for a secret data.
+//
+// You can use any of the supported file formats (JSON, YAML, TOML, or HCL). The
+// structured file can be placed both locally (by system path) and accessible
+// via HTTP (by URL).
+//
+// If err != nil, returns zero-value for a struct and error.
+func (g *GenericUtility[T, K]) ParseFileWithEnvToStruct(path, envPrefix string, model *T) (*T, error) {
+	return ParseFileWithEnvToStruct(path, envPrefix, model)
+}
+
 // Marshal converts struct *T to JSON data (byte slice) using jsoniter.Marshal
 // with a default configuration. A 100% compatible drop-in replacement of
 // "encoding/json" standard lib.

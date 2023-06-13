@@ -233,14 +233,63 @@ k := "two"
 b := gosl.ContainsInMap(m, k) // true
 ```
 
+### ParseFileWithEnvToStruct
+
+Parses the given file from `path` to struct `*T` with an (_optional_) environment variables for a secret data.
+
+Set your secret data to environment variables with personal prefix (for ex., `MY_CONFIG`):
+
+```console
+export MY_CONFIG_TOKEN=my-secret-1234567
+```
+
+Create structured file in any of the supported file formats (JSON, YAML, TOML, or HCL) with the main data to parse (for
+ex., `./config.yml`):
+
+```yaml
+url: https://my-server.com/api/v1
+auth_type: Bearer
+token: '{{ MY_CONFIG_TOKEN }}'
+```
+
+Create a new struct for a parsing data (for ex., `config`):
+
+```go
+type config struct {
+URL      string `koanf:"url"`
+AuthType string `koanf:"auth_type"`
+Token    string `koanf:"token"`
+}
+```
+
+Add to your Go program:
+
+```go
+pathToFile := "./config.yml" // or any URL to file in the supported format
+envPrefix := "MY_CONFIG"     // or "", if you don't want to use env
+modelToParse := &config{}
+
+cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, modelToParse)
+if err != nil {
+log.Fatal(err)
+}
+
+// Results:
+//  cfg.URL = "https://my-server.com/api/v1"
+//  cfg.AuthType = "Bearer"
+//  cfg.Token = "my-secret-1234567"
+```
+
+This generic function is based on the [knadh/koanf][knadh_koanf_url] library.
+
 ### Marshal
 
 Marshal struct `user` to JSON data `j` (byte slice) or error:
 
 ```go
 type user struct {
-    ID   int    `json:"id"`
-    Name string `json:"name"`
+ID   int    `json:"id"`
+Name string `json:"name"`
 }
 
 u := &user{}
@@ -361,17 +410,18 @@ and robots by [Vic Shóstak][author].
 [go_version_img]: https://img.shields.io/badge/Go-1.20+-00ADD8?style=for-the-badge&logo=go
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
-
 [go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
-
 [code_coverage_img]: https://img.shields.io/badge/code_coverage-99%25-success?style=for-the-badge&logo=none
-
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
 [repo_url]: https://github.com/koddr/gosl
 [repo_issues_url]: https://github.com/koddr/gosl/issues
 [repo_pull_request_url]: https://github.com/koddr/gosl/pulls
 [encoding_json_url]: https://pkg.go.dev/encoding/json
+
 [charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
+
+[knadh_koanf_url]: https://github.com/knadh/koanf
+
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
 [author]: https://github.com/koddr
