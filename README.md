@@ -237,14 +237,14 @@ b := gosl.ContainsInMap(m, k) // true
 
 Parses the given file from `path` to struct `*T` with an (_optional_) environment variables for a secret data.
 
-Set your secret data to environment variables with a personal prefix (for ex., `MY_CONFIG`):
+Set your secret data to environment variables with a personal prefix (for example, `MY_CONFIG`):
 
 ```console
 export MY_CONFIG_TOKEN=my-secret-1234567
 ```
 
 Create structured file in any of the supported file formats (JSON, YAML, TOML, or HCL) with the main data to parse (for
-ex., `./config.yml`):
+example, `./config.yml`):
 
 ```yaml
 url: https://my-server.com/api/v1
@@ -252,7 +252,7 @@ auth_type: Bearer
 token: '{{ MY_CONFIG_TOKEN }}'
 ```
 
-Create a new struct for a parsing data (for ex., `config`):
+Create a new struct for a parsing data (for example, `config`):
 
 ```go
 type config struct {
@@ -265,11 +265,11 @@ type config struct {
 Add to your Go program:
 
 ```go
-pathToFile := "./config.yml" // or any URL to file in the supported format
-envPrefix := "MY_CONFIG"     // or "", if you don't want to use env
-modelToParse := &config{}
+pathToFile := "./file.yml" // or any URL to file in the supported format
+envPrefix := "MY_CONFIG"   // or "", if you don't want to use env
+structToParse := &config{}
 
-cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, modelToParse)
+cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, structToParse)
 if err != nil {
     log.Fatal(err)
 }

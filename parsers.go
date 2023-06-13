@@ -48,9 +48,9 @@ import (
 //	func main() {
 //		pathToFile := "https://github.com/user/repo/config.yaml"
 //		envPrefix := "MY_CONFIG" // for ex., MY_CONFIG_TOKEN=my-secret-1234567
-//		modelToParse := &config{}
+//		structToParse := &config{}
 //
-//		cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, modelToParse)
+//		cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, structToParse)
 //		if err != nil {
 //			log.Fatal(err)
 //		}
