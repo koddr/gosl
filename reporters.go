@@ -135,10 +135,10 @@ func IsFileExist(path string) bool {
 	}
 
 	// Get stat of the specified path or error.
-	file, err := os.Stat(path)
+	fileInfo, err := os.Stat(path)
 
 	// Check, if file is not dir.
-	if file.IsDir() {
+	if fileInfo.IsDir() {
 		return false
 	}
 
@@ -173,10 +173,10 @@ func IsDirExist(path string) bool {
 	}
 
 	// Get stat of the specified path or error.
-	dir, err := os.Stat(path)
+	dirInfo, err := os.Stat(path)
 
 	// Check, if dir is not file.
-	if !dir.IsDir() {
+	if !dirInfo.IsDir() {
 		return false
 	}
 
