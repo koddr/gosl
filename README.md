@@ -256,9 +256,9 @@ Create a new struct for a parsing data (for ex., `config`):
 
 ```go
 type config struct {
-URL      string `koanf:"url"`
-AuthType string `koanf:"auth_type"`
-Token    string `koanf:"token"`
+    URL      string `koanf:"url"`
+    AuthType string `koanf:"auth_type"`
+    Token    string `koanf:"token"`
 }
 ```
 
@@ -271,7 +271,7 @@ modelToParse := &config{}
 
 cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, modelToParse)
 if err != nil {
-log.Fatal(err)
+    log.Fatal(err)
 }
 
 // Results:
@@ -288,8 +288,8 @@ Marshal struct `user` to JSON data `j` (byte slice) or error:
 
 ```go
 type user struct {
-ID   int    `json:"id"`
-Name string `json:"name"`
+    ID   int    `json:"id"`
+    Name string `json:"name"`
 }
 
 u := &user{}
