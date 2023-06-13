@@ -1,4 +1,4 @@
-name: Test & Coverage
+name: Upload coverage to Codecov
 
 on:
   push:
