@@ -99,13 +99,13 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 			// Get the structured file from system path.
 			fileInfo, err := os.Stat(path)
 
-			// Check, if file is not dir.
-			if fileInfo.IsDir() {
-				return nil, fmt.Errorf("error: path of the structured file (%s) is dir", path)
-			}
-
 			// Check, if file exists.
 			if err == nil || !os.IsNotExist(err) {
+				// Check, if file is not dir.
+				if fileInfo.IsDir() {
+					return nil, fmt.Errorf("error: path of the structured file (%s) is dir", path)
+				}
+
 				// Load structured file from path (with parser of the file format).
 				if err = k.Load(file.Provider(path), parser); err != nil {
 					return nil, fmt.Errorf("error: structured file is not found in the given path (%s)", path)
