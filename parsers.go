@@ -108,8 +108,13 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 
 				// Load structured file from path (with parser of the file format).
 				if err = k.Load(file.Provider(path), parser); err != nil {
-					return nil, fmt.Errorf("error: structured file is not found in the given path (%s)", path)
+					return nil, fmt.Errorf(
+						"error: not valid structure of the %s file from the given path (%s)",
+						strings.ToUpper(strings.TrimPrefix(parserFormat, ".")), path,
+					)
 				}
+			} else {
+				return nil, fmt.Errorf("error: structured file is not found in the given path (%s)", path)
 			}
 		case "http", "https":
 			// Get the given file from URL.
