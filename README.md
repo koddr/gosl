@@ -418,10 +418,7 @@ and robots by [Vic Shóstak][author].
 [repo_issues_url]: https://github.com/koddr/gosl/issues
 [repo_pull_request_url]: https://github.com/koddr/gosl/pulls
 [encoding_json_url]: https://pkg.go.dev/encoding/json
-
 [charmbracelet_lipgloss_url]: https://github.com/charmbracelet/lipgloss
-
 [knadh_koanf_url]: https://github.com/knadh/koanf
-
 [benchmarks]: https://github.com/koddr/gosl/tree/main#%EF%B8%8F-benchmarks
 [author]: https://github.com/koddr
