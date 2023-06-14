@@ -41,10 +41,7 @@ func RandomString(size int) (string, error) {
 	}
 
 	b := make([]byte, bufferSize)
-	_, err := rand.Read(b)
-	if err != nil {
-		return "", errors.New("can't read given buffer")
-	}
+	_, _ = rand.Read(b)
 
 	return hex.EncodeToString(b)[:size], nil
 }

@@ -3,6 +3,13 @@ package gosl
 import (
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/knadh/koanf/parsers/hcl"
 	"github.com/knadh/koanf/parsers/json"
 	"github.com/knadh/koanf/parsers/toml"
@@ -11,12 +18,6 @@ import (
 	"github.com/knadh/koanf/providers/file"
 	"github.com/knadh/koanf/providers/rawbytes"
 	"github.com/knadh/koanf/v2"
-	"io"
-	"net/http"
-	"net/url"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
 // ParseFileWithEnvToStruct parses the given file from path to struct *T using
@@ -87,11 +88,8 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 			parser = hcl.Parser(true) // HCL (Terraform) format parser
 		}
 
-		// Check, if path of the structured file is URL.
-		u, err := url.Parse(path)
-		if err != nil {
-			return nil, err
-		}
+		// Parse path of the structured file as URL.
+		u, _ := url.Parse(path)
 
 		// Check the schema of the given URL.
 		switch u.Scheme {
