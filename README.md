@@ -411,9 +411,7 @@ and robots by [Vic Shóstak][author].
 [go_report_img]: https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none
 [go_report_url]: https://goreportcard.com/report/github.com/koddr/gosl
 [go_dev_url]: https://pkg.go.dev/github.com/koddr/gosl
-
 [code_coverage_img]: https://img.shields.io/badge/code_coverage-93%25-success?style=for-the-badge&logo=none
-
 [license_img]: https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none
 [license_url]: https://github.com/koddr/gosl/blob/main/LICENSE
 [repo_url]: https://github.com/koddr/gosl
