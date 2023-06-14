@@ -22,6 +22,8 @@ jobs:
           go-version: ${{ matrix.go }}
       - name: Run coverage
         run: go test -race -coverprofile=coverage.out -covermode=atomic
+        env:
+          MY_CONFIG_TOKEN: secret-token-1234567
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
