@@ -149,9 +149,9 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 		// Load environment variables.
 		if err := k.Load(env.Provider(envPrefix, ".", func(s string) string {
 			// Return cleared value of the environment variables.
-			return strings.Replace(
+			return strings.ReplaceAll(
 				strings.ToLower(strings.TrimPrefix(s, fmt.Sprintf("%s_", envPrefix))),
-				"_", ".", -1,
+				"_", ".",
 			)
 		}), nil); err != nil {
 			return nil, fmt.Errorf("error parsing environment variables, %w", err)
