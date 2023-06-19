@@ -71,6 +71,11 @@ func (u *Utility) ToString(b []byte) (string, error) {
 	return ToString(b)
 }
 
+// ModifyByValue modify an unknown key in the given map by it value.
+func (u *Utility) ModifyByValue(m map[string]any, foundValue, newValue any) (bool, map[string]any) {
+	return ModifyByValue(m, foundValue, newValue)
+}
+
 // ContainsInSlice reports if value T is within slice []T.
 //
 // If s have a zero-value returns false for a bool.
