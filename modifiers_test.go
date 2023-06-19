@@ -6,6 +6,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func BenchmarkModifyByValue(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		m := map[string]any{"order": map[string]any{"tags": "new"}}
+		foundValue := "new"
+		newValue := "paid"
+		_, _ = ModifyByValue(m, foundValue, newValue)
+	}
+}
+
 func TestModifyByValue(t *testing.T) {
 	foundValue := "new"
 	newValue := "paid"

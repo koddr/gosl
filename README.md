@@ -375,6 +375,8 @@ BenchmarkMarshal_StructField_16-8               	 2879486	       416.6 ns/op	   
 BenchmarkUnmarshal_StructField_4-8              	 6960462	       169.3 ns/op	      32 B/op	       3 allocs/op
 BenchmarkUnmarshal_StructField_16-8             	  774032	      1534 ns/op	     864 B/op	      45 allocs/op
 
+BenchmarkModifyByValue-8                        	 2824796	       423.2 ns/op	     704 B/op	       6 allocs/op
+
 BenchmarkRenderStyled-8                         	 1459971	       821.5 ns/op	     440 B/op	      12 allocs/op
 
 BenchmarkContainsCaseInsensitive_HelloWorld-8   	24856041	        48.46 ns/op	      16 B/op	       1 allocs/op
