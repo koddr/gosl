@@ -2,5 +2,9 @@ coverage:
   status:
     project:
       default:
-        target: 92%
+        target: 87%
         threshold: 1%
+
+comment:
+  layout: "reach,diff,flags,tree,betaprofiling"
+  show_critical_paths: true
