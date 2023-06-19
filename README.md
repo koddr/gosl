@@ -178,6 +178,20 @@ if err != nil {
 }
 ```
 
+### ModifyByValue
+
+Modify an unknown key in the given `map[string]any` by it value:
+
+```go
+m := map[string]any{"order": map[string]any{"total_cost": 100}}
+foundValue := 100
+newValue := 250
+
+isFound, result := gosl.ModifyByValue(m, foundValue, newValue)
+```
+
+Supports nested maps, but only if their type is `map[string]any`.
+
 ## 🛠️ Universal functions
 
 The universal (or _generic_) functions of the `gosl` package are aimed at
