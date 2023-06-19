@@ -4,7 +4,8 @@ import (
 	"reflect"
 )
 
-// ModifyByValue modify an unknown key in the given map by it value.
+// ModifyByValue modify an unknown key in the given map[string]any by it value.
+// Supports nested maps, but only if their type is map[string]any.
 //
 // Example:
 //
@@ -17,7 +18,7 @@ import (
 //	)
 //
 //	func main() {
-//		m := map[string]any{"order": map[string]int{"total_cost": 100}}
+//		m := map[string]any{"order": map[string]any{"total_cost": 100}}
 //		foundValue := 100
 //		newValue := 250
 //

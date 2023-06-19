@@ -71,7 +71,8 @@ func (u *Utility) ToString(b []byte) (string, error) {
 	return ToString(b)
 }
 
-// ModifyByValue modify an unknown key in the given map by it value.
+// ModifyByValue modify an unknown key in the given map[string]any by it value.
+// Supports nested maps, but only if their type is map[string]any.
 func (u *Utility) ModifyByValue(m map[string]any, foundValue, newValue any) (bool, map[string]any) {
 	return ModifyByValue(m, foundValue, newValue)
 }
