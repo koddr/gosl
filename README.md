@@ -247,11 +247,56 @@ k := "two"
 b := gosl.ContainsInMap(m, k) // true
 ```
 
+### ParseFileToStruct
+
+Parses the given file from `path` to struct `*T`.
+
+Create structured file in any of the supported file formats (JSON, YAML, TOML,
+or HCL) with the main data to parse (for
+example, `./config.yml`):
+
+```yaml
+host: https://my-server.com/api/v1
+port: '3000'
+```
+
+Create a new struct for a parsing data (for example, `server`):
+
+```go
+type server struct {
+Host string `koanf:"host"`
+Port string `koanf:"port"`
+}
+```
+
+Add to your Go program:
+
+```go
+pathToFile := "./file.yml" // or any URL to file in the supported format
+structToParse := &server{}
+
+srv, err := gosl.ParseFileToStruct(pathToFile, structToParse)
+if err != nil {
+log.Fatal(err)
+}
+
+// Results:
+//  srv.Host = "https://my-server.com/api/v1"
+//  srv.Port = "3000"
+```
+
+> 💡 Note: The structured file can be placed both locally (by system path)
+> and accessible via HTTP (by URL).
+
+This generic function is based on the [knadh/koanf][knadh_koanf_url] library.
+
 ### ParseFileWithEnvToStruct
 
-Parses the given file from `path` to struct `*T` with an (_optional_) environment variables for a secret data.
+Parses the given file from `path` to struct `*T` with an (_optional_)
+environment variables for a secret data.
 
-Set your secret data to environment variables with a personal prefix (for example, `MY_CONFIG`):
+Set your secret data to environment variables with a personal prefix (for
+example, `MY_CONFIG`):
 
 ```console
 export MY_CONFIG_TOKEN=my-secret-1234567
@@ -285,7 +330,7 @@ structToParse := &config{}
 
 cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, structToParse)
 if err != nil {
-    log.Fatal(err)
+log.Fatal(err)
 }
 
 // Results:
@@ -293,6 +338,9 @@ if err != nil {
 //  cfg.AuthType = "Bearer"
 //  cfg.Token = "my-secret-1234567"
 ```
+
+> 💡 Note: The structured file can be placed both locally (by system path)
+> and accessible via HTTP (by URL).
 
 This generic function is based on the [knadh/koanf][knadh_koanf_url] library.
 
@@ -302,7 +350,7 @@ Marshal struct `user` to JSON data `j` (byte slice) or error:
 
 ```go
 type user struct {
-    ID   int    `json:"id"`
+ID   int    `json:"id"`
     Name string `json:"name"`
 }
 
@@ -376,6 +424,10 @@ BenchmarkUnmarshal_StructField_4-8              	 6960462	       169.3 ns/op	   
 BenchmarkUnmarshal_StructField_16-8             	  774032	      1534 ns/op	     864 B/op	      45 allocs/op
 
 BenchmarkModifyByValue-8                        	 2824796	       423.2 ns/op	     704 B/op	       6 allocs/op
+
+BenchmarkParseFileToStruct-8                    	   39021	     30177 ns/op	    6184 B/op	     109 allocs/op
+
+BenchmarkParseFileWithEnvToStruct-8             	   28864	     41873 ns/op	   12232 B/op	     219 allocs/op
 
 BenchmarkRenderStyled-8                         	 1459971	       821.5 ns/op	     440 B/op	      12 allocs/op
 

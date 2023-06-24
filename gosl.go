@@ -101,8 +101,21 @@ func (g *GenericUtility[T, K]) NotEquals(value1, value2 K) bool {
 	return NotEquals(value1, value2)
 }
 
+// ParseFileToStruct parses the given file from path to struct *T using
+// "knadh/koanf" package.
+//
+// You can use any of the supported file formats (JSON, YAML, TOML, or HCL). The
+// structured file can be placed both locally (by system path) and accessible
+// via HTTP (by URL).
+//
+// If err != nil, returns zero-value for a struct and error.
+func (g *GenericUtility[T, K]) ParseFileToStruct(path string, model *T) (*T, error) {
+	return ParseFileToStruct(path, model)
+}
+
 // ParseFileWithEnvToStruct parses the given file from path to struct *T using
-// "knadh/koanf" lib with an (optional) environment variables for a secret data.
+// "knadh/koanf" package with an (optional) environment variables for a secret
+// data.
 //
 // You can use any of the supported file formats (JSON, YAML, TOML, or HCL). The
 // structured file can be placed both locally (by system path) and accessible

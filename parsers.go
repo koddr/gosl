@@ -20,8 +20,65 @@ import (
 	"github.com/knadh/koanf/v2"
 )
 
+// ParseFileToStruct parses the given file from path to struct *T using
+// "knadh/koanf" package.
+//
+// You can use any of the supported file formats (JSON, YAML, TOML, or HCL). The
+// structured file can be placed both locally (by system path) and accessible via
+// HTTP (by URL).
+//
+// If err != nil, returns zero-value for a struct and error.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"fmt"
+//		"log"
+//
+//		"github.com/koddr/gosl"
+//	)
+//
+//	type server struct {
+//		Host string `koanf:"host"`
+//		Port string `koanf:"port"`
+//	}
+//
+//	func main() {
+//		pathToFile := "path/to/server.json"
+//		structToParse := &server{}
+//
+//		srv, err := gosl.ParseFileToStruct(pathToFile, structToParse)
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//
+//		fmt.Println(srv)
+//	}
+func ParseFileToStruct[T any](path string, model *T) (*T, error) {
+	// Check, if path is not empty.
+	if path == "" {
+		return nil, errors.New("error: given path of the structured file is empty")
+	}
+
+	// Create a new koanf instance and parse the given path.
+	k, err := newKoanfByPath(path)
+	if err != nil {
+		return nil, err
+	}
+
+	// Unmarshal structured data to the given struct.
+	if err = k.Unmarshal("", &model); err != nil {
+		return nil, fmt.Errorf("error unmarshalling data from structured file to struct, %w", err)
+	}
+
+	return model, nil
+}
+
 // ParseFileWithEnvToStruct parses the given file from path to struct *T using
-// "knadh/koanf" lib with an (optional) environment variables for a secret data.
+// "knadh/koanf" package with an (optional) environment variables for a secret
+// data.
 //
 // You can use any of the supported file formats (JSON, YAML, TOML, or HCL). The
 // structured file can be placed both locally (by system path) and accessible via
@@ -64,6 +121,44 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 		return nil, errors.New("error: given path of the structured file is empty")
 	}
 
+	// Check, if environment variables prefix was given.
+	if envPrefix == "" {
+		return nil, errors.New("error: given environment variables prefix is empty")
+	}
+
+	// Create a new koanf instance and parse the given path.
+	k, err := newKoanfByPath(path)
+	if err != nil {
+		return nil, err
+	}
+
+	// Load environment variables.
+	if err = k.Load(env.Provider(envPrefix, ".", func(s string) string {
+		// Return cleared value of the environment variables.
+		return strings.ReplaceAll(
+			strings.ToLower(strings.TrimPrefix(s, fmt.Sprintf("%s_", envPrefix))),
+			"_", ".",
+		)
+	}), nil); err != nil {
+		return nil, fmt.Errorf("error parsing environment variables, %w", err)
+	}
+
+	// Merge environment variables into the structured file data.
+	if err = k.Merge(k); err != nil {
+		return nil, fmt.Errorf("error merging environment variables into the structured file data, %w", err)
+	}
+
+	// Unmarshal structured data to the given struct.
+	if err = k.Unmarshal("", &model); err != nil {
+		return nil, fmt.Errorf("error unmarshalling data from structured file to struct, %w", err)
+	}
+
+	return model, nil
+}
+
+// newKoanfByPath helps to parse the given path for ParseFileToStruct and
+// ParseFileWithEnvToStruct functions.
+func newKoanfByPath(path string) (*koanf.Koanf, error) {
 	// Create a new koanf instance.
 	k := koanf.New(".")
 
@@ -144,29 +239,5 @@ func ParseFileWithEnvToStruct[T any](path, envPrefix string, model *T) (*T, erro
 		return nil, errors.New("error: unknown format of structured file, see: https://github.com/knadh/koanf")
 	}
 
-	// Check, if environment variables prefix was given.
-	if envPrefix != "" {
-		// Load environment variables.
-		if err := k.Load(env.Provider(envPrefix, ".", func(s string) string {
-			// Return cleared value of the environment variables.
-			return strings.ReplaceAll(
-				strings.ToLower(strings.TrimPrefix(s, fmt.Sprintf("%s_", envPrefix))),
-				"_", ".",
-			)
-		}), nil); err != nil {
-			return nil, fmt.Errorf("error parsing environment variables, %w", err)
-		}
-
-		// Merge environment variables into the structured file data.
-		if err := k.Merge(k); err != nil {
-			return nil, fmt.Errorf("error merging environment variables into the structured file data, %w", err)
-		}
-	}
-
-	// Unmarshal structured data to the given struct.
-	if err := k.Unmarshal("", &model); err != nil {
-		return nil, fmt.Errorf("error unmarshalling data from structured file to struct, %w", err)
-	}
-
-	return model, nil
+	return k, nil
 }
