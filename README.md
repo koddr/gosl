@@ -264,8 +264,8 @@ Create a new struct for a parsing data (for example, `server`):
 
 ```go
 type server struct {
-Host string `koanf:"host"`
-Port string `koanf:"port"`
+    Host string `koanf:"host"`
+    Port string `koanf:"port"`
 }
 ```
 
@@ -277,7 +277,7 @@ structToParse := &server{}
 
 srv, err := gosl.ParseFileToStruct(pathToFile, structToParse)
 if err != nil {
-log.Fatal(err)
+    log.Fatal(err)
 }
 
 // Results:
@@ -330,7 +330,7 @@ structToParse := &config{}
 
 cfg, err := gosl.ParseFileWithEnvToStruct(pathToFile, envPrefix, structToParse)
 if err != nil {
-log.Fatal(err)
+    log.Fatal(err)
 }
 
 // Results:
