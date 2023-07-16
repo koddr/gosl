@@ -7,6 +7,8 @@ before:
   hooks:
     - go mod download
     - go mod tidy
+    - go run golang.org/x/vuln/cmd/govulncheck@latest -test ./...
+    - go run github.com/google/osv-scanner/cmd/osv-scanner@latest -r .
     - go run github.com/securego/gosec/v2/cmd/gosec@latest -exclude=G107 -quiet ./...
     - go run github.com/go-critic/go-critic/cmd/gocritic@latest check -enableAll ./...
 
@@ -50,7 +52,7 @@ changelog:
   sort: asc
   abbrev: -1
   filters:
-    exclude: [ "^*.md:", "^*.yml:" ]
+    exclude: [ "^*.md", "^*.yml" ]
   groups:
     - title: Features
       regexp: ^.*?(F|f)eature.*?$
