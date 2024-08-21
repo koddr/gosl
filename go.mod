@@ -3,7 +3,7 @@ module github.com/koddr/gosl
 go 1.20
 
 require (
-	github.com/charmbracelet/lipgloss v0.12.1
+	github.com/charmbracelet/lipgloss v0.13.0
 	github.com/json-iterator/go v1.1.12
 	github.com/knadh/koanf/parsers/hcl v0.1.0
 	github.com/knadh/koanf/parsers/json v0.1.0
