@@ -3,7 +3,7 @@ module github.com/koddr/gosl
 go 1.20
 
 require (
-	github.com/charmbracelet/lipgloss v0.13.0
+	github.com/charmbracelet/lipgloss v0.13.1
 	github.com/json-iterator/go v1.1.12
 	github.com/knadh/koanf/parsers/hcl v0.1.0
 	github.com/knadh/koanf/parsers/json v0.1.0
@@ -18,7 +18,7 @@ require (
 
 require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
-	github.com/charmbracelet/x/ansi v0.1.4 // indirect
+	github.com/charmbracelet/x/ansi v0.3.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.0.0-alpha.1 // indirect
